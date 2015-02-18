@@ -14,3 +14,9 @@ Feature: Starting the game
  	When I click on "submit"
  	Then I should see "Please enter a name"
 
+ Scenario: Start playing
+  Given I visit the player page
+  When I fill in the "name"
+  When I click "submit"
+  When I click the link "Play the game"
+  Then I should be able to see "Placeholder"
