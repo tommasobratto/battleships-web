@@ -9,8 +9,17 @@ class Battleships < Sinatra::Base
   end
 
   get '/player' do
-    @player = params[:name]
     erb :player
+  end
+
+  post '/player' do
+    if params[:name].empty?
+      @message = 'Please enter a name'
+      erb :player
+    else
+      @player = params[:name]
+      erb :player
+    end
   end
 
   # start the server if ruby file executed directly
