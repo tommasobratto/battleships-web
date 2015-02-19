@@ -1,4 +1,12 @@
-<%= @table %>
+<table border="2" width="250" cellpadding="10" cellspacing="5" bgcolor="#efefef">
+  <% @table.each do |row| %>
+    <tr>
+      <% row.each do |content| %>
+        <td><%= content %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
 
 <!-- <head> 
   <style> 
