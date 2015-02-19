@@ -1,9 +1,16 @@
 require 'sinatra/base'
+require_relative 'board'
+require_relative 'game'
+require_relative 'ship'
+require_relative 'player'
+require_relative 'cell'
+require_relative 'water'
 
 class Battleships < Sinatra::Base
 
-  set :views, Proc.new { File.join(root, ".", "views") }
-  
+  game = Game.new
+  board = Board.new(Cell)
+
   get '/' do
     erb :index
   end
@@ -13,16 +20,25 @@ class Battleships < Sinatra::Base
   end
 
   post '/player' do
+    @name = params[:name]
+    @game = game
     if params[:name].empty?
       @message = 'Please enter a name'
       erb :player
     else
-      @player = params[:name]
+      @player = Player.new(@name)
+      game.add_player(@player)
+      puts @game.inspect
       erb :player
     end
   end
 
   get "/battleship" do
+    @table = board.grid
+    erb :battleship
+  end
+
+  post "/battleship" do
     erb :battleship
   end
   

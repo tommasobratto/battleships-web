@@ -1,6 +1,6 @@
 <div>
-  <% if @player %>
-  Welcome player <%= @player %>
+  <% if @name %>
+  Welcome player <%= @name %>
   <a href="/battleship">Play the game</a>
     <% else %>
   <form action="/player" method='post'>
