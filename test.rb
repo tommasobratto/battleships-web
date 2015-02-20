@@ -1,0 +1,6 @@
+require 'lib/cell.rb'
+require 'lib/water.rb'
+require 'lib/ship.rb'
+require 'lib/board.rb'
+require 'lib/game.rb'
+require 'lib/player.rb'
